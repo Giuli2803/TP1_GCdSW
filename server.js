@@ -42,7 +42,8 @@ fastify.get('/', async function handler(request, reply) {
         return reply.status(503).send({ error: 'SDK not ready yet' });
     }
 
-    const idClient = '28202115765415654aaa'; // Este ID podría ser dinámico
+    //const idClient = crypto.randomUUID()
+    const idClient = process.env.CLIENT_ID; // Este ID podría ser dinámico
     // Aquí es donde llamas al tratamiento usando `idClient`.
     const treatment = SplitIOClient.getTreatment(idClient, 'TP1');
 
