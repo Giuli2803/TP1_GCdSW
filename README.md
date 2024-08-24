@@ -5,8 +5,8 @@ Consigna:
 Definir 4 feature flags:
 
 - 1 feature flag va a ser asignada a una sola persona (mediante un individual target) (Color azul)
-- 1 feature flag va a ser asignada a un segmento que contenga 2 personas (mediante un individual targets) creando y seleccionado un evento. (Color Violeta)
-- Los 2 feature flags van a ser para e resto de los usuarios con una probabilidad 50/50 (Color Verde y Rojo).
+- 1 feature flag va a ser asignada a un segmento que contenga 2 personas (mediante un individual targets) creando y seleccionado un evento. (Color naranja)
+- Los 2 feature flags van a ser para e resto de los usuarios con una probabilidad 50/50 (Color Verde y violeta).
 
 Una vez definidas se debe desplegar el programa en diferentes clientes y mediante los IDs particulares se debe observar el comportamiento descripto en la herramienta de feature flag (split en este caso).
 

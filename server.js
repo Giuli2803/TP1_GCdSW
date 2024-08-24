@@ -14,10 +14,12 @@ const fastify = Fastify({
 const factory = SplitFactory({
     core: {
         authorizationKey: process.env.SPLIT_IO_AUTHORIZATION_KEY,
-        key: 'Up'
     },
     startup: {
         readyTimeout: 1.5
+    },
+    scheduler: {
+        featuresRefreshRate: 0 // Desactiva el cacheado, refresca en cada solicitud
     }
 });
 
@@ -40,17 +42,25 @@ fastify.get('/', async function handler(request, reply) {
         return reply.status(503).send({ error: 'SDK not ready yet' });
     }
 
-    const idClient = crypto.randomUUID();
-    const treatment = SplitIOClient.getTreatment(idClient, 'Activacion');
+    const idClient = '28202115765415654aaa'; // Este ID podría ser dinámico
+    // Aquí es donde llamas al tratamiento usando `idClient`.
+    const treatment = SplitIOClient.getTreatment(idClient, 'TP1');
 
-    if (treatment === 'on') {
-        keyUp = 'on';
-    } else if (treatment === 'off') {
-        keyUp = 'off';
-    } else {
-        keyUp = 'control'; // Tratamiento de control si no se obtiene 'on' o 'off'
+    // Maneja el tratamiento recibido
+    if (treatment === 'Azul') {
+        keyUp = 'azul';
+    } else if (treatment === 'Naranja') {
+        keyUp = 'naraja';
+    } else if (treatment === 'Verde') {
+        keyUp = 'verde';
+    } else if (treatment === 'Violeta') {
+        keyUp = 'Violeta';
+    }
+    else {
+        keyUp = 'control'; // Tratamiento de control si no se obtiene 'on', 'off' o 'Azul'
     }
 
+    // Respuesta con los datos del cliente y el tratamiento
     return { "Up": keyUp, "idCliente": idClient };
 });
 
